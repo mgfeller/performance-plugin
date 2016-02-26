@@ -3,6 +3,7 @@ package hudson.plugins.performance;
 import hudson.model.AbstractBuild;
 import hudson.model.AbstractProject;
 import hudson.model.Action;
+import hudson.model.Run;
 import hudson.util.*;
 import hudson.util.ChartUtil.NumberOnlyBuildLabel;
 
@@ -319,7 +320,7 @@ public final class PerformanceProjectAction implements Action {
           continue;
         }
 
-        NumberOnlyBuildLabel label = new NumberOnlyBuildLabel(currentBuild);
+        NumberOnlyBuildLabel label = new NumberOnlyBuildLabel((Run<?, ?>) currentBuild);
         PerformanceBuildAction performanceBuildAction = currentBuild
             .getAction(PerformanceBuildAction.class);
         if (performanceBuildAction == null) {
@@ -361,7 +362,7 @@ public final class PerformanceProjectAction implements Action {
 
     for (AbstractBuild<?, ?> build : builds) {
       if (buildsLimits.in(nbBuildsToAnalyze)) {
-        NumberOnlyBuildLabel label = new NumberOnlyBuildLabel(build);
+        NumberOnlyBuildLabel label = new NumberOnlyBuildLabel((Run<?, ?>) build);
 
         if (!buildsLimits.includedByStep(build.number)) {
           continue;
@@ -414,7 +415,7 @@ public final class PerformanceProjectAction implements Action {
           continue;
         }
 
-        NumberOnlyBuildLabel label = new NumberOnlyBuildLabel(build);
+        NumberOnlyBuildLabel label = new NumberOnlyBuildLabel((Run<?, ?>) build);
         PerformanceBuildAction performanceBuildAction = build
             .getAction(PerformanceBuildAction.class);
         if (performanceBuildAction == null) {
@@ -478,7 +479,7 @@ public final class PerformanceProjectAction implements Action {
                 }
 
                 final ThroughputReport throughputReport = new ThroughputReport(performanceReport);
-                final NumberOnlyBuildLabel label = new NumberOnlyBuildLabel(build);
+                final NumberOnlyBuildLabel label = new NumberOnlyBuildLabel((Run<?, ?>) build);
                 dataSetBuilder.add(throughputReport.get(), Messages.ProjectAction_RequestsPerSeconds(), label);
             }
             nbBuildsToAnalyze--;
@@ -509,7 +510,7 @@ public final class PerformanceProjectAction implements Action {
     for (Iterator<?> iterator = builds.iterator(); iterator.hasNext();) {
       AbstractBuild<?, ?> currentBuild = (AbstractBuild<?, ?>) iterator.next();
       if (buildsLimits.in(nbBuildsToAnalyze)) {
-        NumberOnlyBuildLabel label = new NumberOnlyBuildLabel(currentBuild);
+        NumberOnlyBuildLabel label = new NumberOnlyBuildLabel((Run<?, ?>) currentBuild);
         PerformanceBuildAction performanceBuildAction = currentBuild
             .getAction(PerformanceBuildAction.class);
         if (performanceBuildAction == null) {
@@ -763,7 +764,7 @@ public final class PerformanceProjectAction implements Action {
     int nbBuildsToAnalyze = builds.size();
     for (AbstractBuild<?, ?> currentBuild : builds) {
       if (buildsLimits.in(nbBuildsToAnalyze)) {
-        NumberOnlyBuildLabel label = new NumberOnlyBuildLabel(currentBuild);
+        NumberOnlyBuildLabel label = new NumberOnlyBuildLabel((Run<?, ?>) currentBuild);
         PerformanceBuildAction performanceBuildAction = currentBuild
             .getAction(PerformanceBuildAction.class);
         if (performanceBuildAction == null) {
