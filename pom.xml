@@ -8,7 +8,7 @@
 
   <artifactId>performance</artifactId>
   <packaging>hpi</packaging>
-  <version>1.14-SNAPSHOT</version>
+  <version>1.14-MGF-${performance-buildnumber}</version>
   <name>Performance plugin</name>
   <url>http://wiki.jenkins-ci.org/display/JENKINS/Performance+Plugin</url>
 
@@ -33,6 +33,7 @@
 
 
   <properties>
+    <performance-buildnumber>0</performance-buildnumber>
     <jenkins.version>1.648</jenkins.version>
   </properties>
 
