@@ -39,7 +39,6 @@ public class TrendReportGraphs implements ModelObject {
       if (performanceReport != null) {
         String uri = performanceReportPosition.getSummarizerTrendUri();
         if (uri != null) {
-          System.err.println("++++ " + uri.toString());
           UriReport uriReport = performanceReport.getUriReportMap().get(uri);
           uriReport.doSummarizerTrendGraph(request, response);
         }
