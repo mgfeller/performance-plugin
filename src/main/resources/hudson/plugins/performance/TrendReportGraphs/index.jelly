@@ -14,9 +14,13 @@
           <strong class="uri">${%URI}: ${URI}</strong>
          <tr>
           <td class="left">
-              <a href="./uriReport/${it.getUriReport(URI).encodeUriReport()}">
-              <st:out value="${it.getUriReport(URI).getShortUri()}" />
-              </a>
+             <!-- Looks like this method does not exists. The URI should read
+             filename:uri
+             but even if it is correct the target page rendering throws exceptions.
+             -->
+             <!-- <a href="./uriReport/${it.getUriReport(URI).encodeUriReport()}"> -->
+              <st:out value="${it.getUriReport(URI).getUri()}" />
+             <!-- </a> -->
           </td>
           <j:choose>
             <j:when test="${it.getUriReport(URI).getPerformanceReport().ifSummarizerParserUsed(it.getPerformanceReport().getReportFileName())}">
